@@ -1,0 +1,37 @@
+{
+  "name": "react-scaffold-generator22",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "",
+    "generate": "node index.js generate model -p example-app/ date:string:date password:string:password color:string:color name:string description:string cost:number count:integer isTrue:boolean range:integer:range null:null updown:number:updown file:string:data-url email:string:email uri:string:uri datetime:string:date-time text:string:textarea",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "generate": {
+      "clearBuffer": true,
+      "patterns": [
+        "index.js",
+        "templates"
+      ],
+      "extensions": ".js,.css",
+      "ignore": "example-app/"
+    }
+  },
+  "author": "Drew Wetherington (dgwetherington@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "figlet": "^1.5.0",
+    "merge-json-file": "^1.0.1",
+    "minimist": "^1.2.5",
+    "react-router-dom": "^5.2.0",
+    "template-file": "^4.0.1"
+  },
+  "devDependencies": {
+    "npm-watch": "^0.7.0"
+  }
+}

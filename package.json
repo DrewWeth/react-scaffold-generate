@@ -38,6 +38,6 @@
     "npm-watch": "^0.7.0"
   },
   "bin": {
-    "react-scaffold-generator": "./cli.js"
+    "react-scaffold-generate": "./cli.js"
   }
 }

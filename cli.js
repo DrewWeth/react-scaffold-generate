@@ -49,6 +49,10 @@ const main = () => {
     const ComponentName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
     const basepath = argv["p"] || argv["path"] || cwd()
 
+    const relative = (str) =>{
+        return path.relative(basepath, str);
+    }
+
     const data = {
         ComponentName, 
         componentName: modelName.toLowerCase(),
@@ -83,16 +87,17 @@ const main = () => {
         { link: `/${data.componentName}`, name: data.ComponentName },
     ]
 
+
     const routesPath = path.join(destinationComponentPath, "routes.js")
     fs.writeFileSync(routesPath, `export const routes = ${JSON.stringify({[data.componentName]: links}, 0, 2)}`)
-    console.log(`${chalk.green("Success")} wrote routes.js to ${routesPath}`)
+    console.log(`${chalk.green("Success")} wrote routes.js to ${relative(routesPath)}`)
     
     // Output static files
     staticFiles.map(sourcePath => {
         const destinationPath = path.join(destinationComponentPath, path.parse(sourcePath).base)
         renderTemplateFile(sourcePath, data).then(str => {
             fs.writeFileSync(destinationPath, str)
-            console.log(`${chalk.green("Success")} wrote static component to ${destinationPath}`)
+            console.log(`${chalk.green("Success")} wrote static component to ${relative(destinationPath)}`)
             destinationPath
         })    
     })
@@ -102,14 +107,14 @@ const main = () => {
 
     const modelDefPath = path.join(newComponentPath, `model.js`)
     fs.writeFileSync(modelDefPath, `export const model = ${JSON.stringify(data.attrs, 0, 2)}`)
-    console.log(`${chalk.green("Success")} wrote model.js to ${modelDefPath}`)
+    console.log(`${chalk.green("Success")} wrote model.js to ${relative(modelDefPath)}`)
 
     const componentFiles = fs.readdirSync(componentsPath).map(name => path.join(componentsPath, name))
     componentFiles.map(sourcePath => {
         const destinationPath = path.join(newComponentPath, path.parse(sourcePath).base)
         renderTemplateFile(sourcePath, data).then(str => {
             fs.writeFileSync(destinationPath, str)
-            console.log(`${chalk.green("Success")} wrote model component to ${destinationPath}`)
+            console.log(`${chalk.green("Success")} wrote model component to ${relative(destinationPath)}`)
             destinationPath
         })
     })

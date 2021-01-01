@@ -8,3 +8,10 @@ Example usage:
     `react-scaffold-generate model Inventory name:string count:number description:string sku:string`
 
 This will create
+
+
+
+npm i @rjsf/material-ui
+npm i react-notifications
+npm i react-router-dom
+npm start

@@ -24,7 +24,7 @@ export default ({title, modelDefinition, onSubmit, formData, after}) =>{
   const schema = {
     title,
     type: "object",
-    required: Object.keys(props),
+    required: modelDefinition.filter(attr => attr.required === true).map(attr => attr.name),
     properties: props
   };
   

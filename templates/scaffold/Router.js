@@ -63,3 +63,5 @@ export const Router = () => {
             </State.Provider >
     )
 }
+
+export default Router

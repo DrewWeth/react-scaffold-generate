@@ -24,14 +24,20 @@
   "author": "Drew Wetherington (dgwetherington@gmail.com)",
   "license": "ISC",
   "dependencies": {
+    "@rjsf/material-ui": "^2.4.1",
     "chalk": "^2.4.2",
     "figlet": "^1.5.0",
+    "get-installed-path": "^4.0.8",
     "merge-json-file": "^1.0.1",
     "minimist": "^1.2.5",
+    "react-notifications": "^1.7.2",
     "react-router-dom": "^5.2.0",
     "template-file": "^4.0.1"
   },
   "devDependencies": {
     "npm-watch": "^0.7.0"
+  },
+  "bin": {
+    "react-scaffold-generator": "./cli.js"
   }
 }

@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import { BrowserRouter, Route, Link, Switch,NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {deleteModel} from './Networking'
 import { routes } from './routes.js'
 import {State} from './State'
@@ -9,7 +9,7 @@ export const Nav = () => {
         <div>
             <h3>
                 React Scaffold Generator
-                </h3>
+            </h3>
         </div>
         <div>
 

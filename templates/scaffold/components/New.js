@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { State } from '../State'
 import './Component.css';
-import { NavLink, Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Form from '../Form';
 import {stateCreateModel} from '../Networking'
 import {NotificationManager} from 'react-notifications';

@@ -1,9 +1,6 @@
 import React, {useContext} from 'react';
 import './Component.css';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     useParams
   } from "react-router-dom";
 import {getModel, updateModel} from '../Networking'

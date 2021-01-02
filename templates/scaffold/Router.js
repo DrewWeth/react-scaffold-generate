@@ -1,13 +1,12 @@
 import React from "react";
-import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import List from './{{ComponentName}}/List'
 import Edit from './{{ComponentName}}/Edit'
 import New from './{{ComponentName}}/New'
 import Details from './{{ComponentName}}/Details'
 import { State } from './State'
-import { useState } from 'react'
 import { Nav } from './Shared'
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationContainer} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import ScaffoldHome from './ScaffoldHome';
 
@@ -39,7 +38,6 @@ export const Router = () => {
                     <Nav/>
                 </Content>
                 <Content>
-
                     <Switch>
                         <Route path="/scaffold" exact>
                             <ScaffoldHome/>

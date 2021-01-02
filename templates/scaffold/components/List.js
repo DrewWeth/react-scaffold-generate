@@ -1,10 +1,9 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext } from 'react'
 import { State } from '../State'
 import './Component.css';
 import { Link } from 'react-router-dom';
 import {model} from './model.js'
 import {ActionButtons} from '../Shared'
-import {setModelList} from '../Networking'
 
 function List () {
   const { state, setState } = useContext(State)

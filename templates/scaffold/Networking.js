@@ -1,5 +1,4 @@
 
-
 export const setModelList =(setState, state, modelName, list) =>{
     const newData = Array.isArray(list) ? list : []
     setState({...state, [modelName]: newData })

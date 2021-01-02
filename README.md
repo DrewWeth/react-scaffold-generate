@@ -1,4 +1,4 @@
-# react-scaffold-generate
+# react-scaffold-generator
 
 
 ## About
@@ -10,8 +10,12 @@ This project is a port of `rails scaffold generate` for React ([More info](https
 
 ## Example usage:
 
-Create new React app
+Install templating 
+```
+npm install -g react-scaffold-generator
+```
 
+Create new React app
 ```
 # Create new app called example-app
 npx create-react-app example-app
@@ -21,7 +25,7 @@ cd example-app
 
 ```
 # Create component Template for Inventory with 4 attributes
-react-scaffold-generate generate Inventory \
+react-scaffold-generator generate Inventory \
     name:string \
     count:number \
     description:string \    
@@ -45,7 +49,7 @@ Success wrote model component to src/components/Inventory/New.js
 Success wrote model component to src/components/Inventory/List.js
 ```
 
-Install dependencies used by react-scaffold-generate
+Install dependencies used by react-scaffold-generator
 ```
 # Used for form generation form UI and css
 npm install --save @rjsf/material-ui
@@ -72,7 +76,7 @@ npm start
 ## Arguments
 
 
-`react-scaffold-generate generate [ModelName] [list of ...attributeName:attributeType:atributeFormat`
+`react-scaffold-generator generate [ModelName] [list of attributeName:attributeType:atributeFormat`
 
 The list of attributes for a model can be the following
 
@@ -123,3 +127,5 @@ Files in `src/components` are shared between scaffold models.
 Files in `src/components/Inventory` are related to listing, editing, showing details, and styling the Inventory resource.
 
 
+
+``` Developing locally ```

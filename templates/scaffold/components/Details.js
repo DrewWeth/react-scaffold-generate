@@ -1,9 +1,6 @@
 import React from 'react';
 import './Component.css';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     useParams
   } from "react-router-dom";
 import {getModel} from '../Networking'

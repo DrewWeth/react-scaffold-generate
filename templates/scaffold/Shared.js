@@ -1,10 +1,9 @@
 import React, {useContext} from "react";
 import { Link, NavLink } from "react-router-dom";
 import {deleteModel} from './Networking'
-import { routes } from './routes.js'
 import {State} from './State'
 
-export const Nav = () => {
+export const Nav = ({scaffoldModels}) => {
     return <div className='navContainer'>
         <div>
             <h3>
@@ -12,10 +11,13 @@ export const Nav = () => {
             </h3>
         </div>
         <div>
-
-        {Object.values(routes.{{componentName}}).map( ({link, name}, i) =>{
-            return <NavLink key={i} activeClassName={'navLinkActive'} className="spaceLeft navLink" to={link}>{name}</NavLink>
-        })}
+            <NavLink key={'home'} exact activeClassName={'navLinkActive'} className="spaceLeft navLink" to='/'>Home</NavLink>
+            <NavLink key={'scaffold'} activeClassName={'navLinkActive'} className="spaceLeft navLink" to='/scaffold'>Scaffold</NavLink>
+            {Array.isArray(scaffoldModels) && scaffoldModels.map( (name, i) => {
+                return <NavLink key={i} activeClassName={'navLinkActive'} className="spaceLeft navLink" to={`/${name}`}>
+                    {name}
+                </NavLink>
+            })}
         </div>
     </div>
 }

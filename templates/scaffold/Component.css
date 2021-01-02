@@ -58,6 +58,9 @@ a{
     border-collapse: collapse;
     border-radius: 3px;
     overflow-x: scroll;
+}
+
+.block{
     display: block;
 }
 

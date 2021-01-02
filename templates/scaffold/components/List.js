@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { State } from '../State'
-import './Component.css';
 import { Link } from 'react-router-dom';
 import {model} from './model.js'
 import {ActionButtons} from '../Shared'
@@ -18,7 +17,7 @@ function List () {
         <Link to='/{{componentName}}/new' className="navLink">New {{ComponentName}}</Link>
       </div>
       <div>
-        <table className="styled-table">
+        <table className="styled-table block">
           <thead>
             <tr>
               <th>ID</th>

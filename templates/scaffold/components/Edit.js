@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import './Component.css';
 import {
     useParams
   } from "react-router-dom";

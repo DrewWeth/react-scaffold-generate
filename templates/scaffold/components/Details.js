@@ -1,5 +1,4 @@
 import React from 'react';
-import './Component.css';
 import {
     useParams
   } from "react-router-dom";

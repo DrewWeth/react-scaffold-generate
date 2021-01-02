@@ -28,7 +28,7 @@ const main = () => {
     
     // Parse checking
     if (generate !== "generate") {
-        error(`First argument is an action [generate, remove]\n${chalk.green('USAGE')}: ${USAGE}`)
+        error(`First argument is an action [generate]\n${chalk.green('USAGE')}: ${USAGE}`)
         exit(1)
     }
     if (!modelName) {
@@ -46,13 +46,14 @@ const main = () => {
         exit(1)
     }
     
+    
     const ComponentName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
     const basepath = argv["p"] || argv["path"] || cwd()
-
+    
     const relative = (str) =>{
         return path.relative(basepath, str);
     }
-
+    
     const data = {
         ComponentName, 
         componentName: modelName.toLowerCase(),
@@ -62,6 +63,12 @@ const main = () => {
         },
         doubleEscapeState: () => `{{ state, setState }}`
     }
+    if(!fs.existsSync(path.join(data.meta.basepath, "package.json")) && !argv["g"]){
+        console.error(`${chalk.yellow("Warning")}: Are you sure you are in a React project directory? It is recommended to run this command in the root directory of a react project (where package.json is). To run in directory without package.json use -g flag.`)
+        exit(1)
+    }
+
+
     console.log(JSON.stringify(data, null, 2))
 
 
@@ -74,7 +81,8 @@ const main = () => {
         "State.js",
         "Shared.js",
         "Networking.js",
-        "ScaffoldHome.js"
+        "ScaffoldHome.js",
+        "Component.css"
     ].map(fileName => path.join(scaffoldPath, fileName))
     
     
@@ -82,15 +90,9 @@ const main = () => {
     const newComponentPath = path.join(destinationComponentPath, ComponentName)
     makeFolders(newComponentPath)
 
-    const links = [
-        { link: "/scaffold", name: 'Scaffold' },
-        { link: `/${data.componentName}`, name: data.ComponentName },
-    ]
-
-
-    const routesPath = path.join(destinationComponentPath, "routes.js")
-    fs.writeFileSync(routesPath, `export const routes = ${JSON.stringify({[data.componentName]: links}, 0, 2)}`)
-    console.log(`${chalk.green("Success")} wrote routes.js to ${relative(routesPath)}`)
+    const routesPath = path.join(destinationComponentPath, "routes.json")
+    mergeJSON(routesPath, { [ComponentName]: {} }, { pretty:true })
+    console.log(`${chalk.green("Success")} wrote and merged routes.json to ${relative(routesPath)}`)
     
     // Output static files
     staticFiles.map(sourcePath => {
@@ -102,9 +104,7 @@ const main = () => {
         })    
     })
 
-    
     // Output model files
-
     const modelDefPath = path.join(newComponentPath, `model.js`)
     fs.writeFileSync(modelDefPath, `export const model = ${JSON.stringify(data.attrs, 0, 2)}`)
     console.log(`${chalk.green("Success")} wrote model.js to ${relative(modelDefPath)}`)
@@ -119,6 +119,11 @@ const main = () => {
         })
     })
 
+    const indexTemplatePath = path.join(scaffoldPath, "index.js")
+    renderTemplateFile(indexTemplatePath, data).then(str =>{
+        fs.writeFileSync(data.meta.basepath, str)
+        console.log(`${chalk.green("Success")} wrote index.js component to ${indexTemplatePath}`)
+    })
 }
 
 main()

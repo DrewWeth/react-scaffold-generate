@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react'
 import { State } from '../State'
-import './Component.css';
 import { Link, useHistory } from 'react-router-dom';
 import Form from '../Form';
 import {stateCreateModel} from '../Networking'
@@ -17,8 +16,7 @@ function New () {
   }
 
   const onSubmit = (e) => {
-    const id = new Date().getTime().toString()
-    console.log(e)
+    const id = new Date().getTime().toString(36)
     stateCreateModel(setState, state, "{{componentName}}", {"_id": id, ...e.formData})
     NotificationManager.info("Go to details page", "{{ComponentName}} created", undefined, notfificationClicked(id) );
     setLastLink(`/{{componentName}}/${id}`)

@@ -1,5 +1,5 @@
 {
-  "name": "react-scaffold-generator",
+  "name": "react-scaffold-generate",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -43,6 +43,6 @@
     "npm-watch": "^0.7.0"
   },
   "bin": {
-    "react-scaffold-generator": "./cli.js"
+    "react-scaffold-generate": "./cli.js"
   }
 }

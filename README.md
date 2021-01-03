@@ -1,4 +1,4 @@
-# react-scaffold-generator
+# react-scaffold-generate
 
 
 ## About
@@ -12,7 +12,7 @@ This project is a port of `rails scaffold generate` for React ([More info](https
 
 Install templating 
 ```
-npm install -g react-scaffold-generator
+npm install -g react-scaffold-generate
 ```
 
 Create new React app
@@ -25,7 +25,7 @@ cd example-app
 
 ```
 # Create component Template for Inventory with 4 attributes
-react-scaffold-generator generate Inventory \
+react-scaffold-generate generate Inventory \
     name:string \
     count:number \
     description:string \    
@@ -49,7 +49,7 @@ Success wrote model component to src/components/Inventory/New.js
 Success wrote model component to src/components/Inventory/List.js
 ```
 
-Install dependencies used by react-scaffold-generator
+Install dependencies used by react-scaffold-generate
 ```
 # Used for form generation form UI and css
 npm install --save @rjsf/material-ui
@@ -76,7 +76,7 @@ npm start
 ## Arguments
 
 
-`react-scaffold-generator generate [ModelName] [list of attributeName:attributeType:atributeFormat`
+`react-scaffold-generate generate [ModelName] [list of attributeName:attributeType:atributeFormat`
 
 The list of attributes for a model can be the following
 

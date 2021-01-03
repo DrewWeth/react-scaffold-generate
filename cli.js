@@ -9,7 +9,7 @@ import minimist from 'minimist'
 import { mergeJSON } from "merge-json-file";
 import { getInstalledPath } from 'get-installed-path'
 
-const localPath = await getInstalledPath('react-scaffold-generator')
+const localPath = await getInstalledPath('react-scaffold-generate')
 
 const USAGE = `${process.argv[1]} generate [modelName] [attributeName:attributeType ...]`
 

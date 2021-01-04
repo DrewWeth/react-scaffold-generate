@@ -1,0 +1,56 @@
+<html>
+    <style>
+        img{
+            margin-right: 10px;
+            border: 3px black solid;
+        }
+        .static{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1000%;
+            color: black;
+        }
+        .static-contrast{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-48%, -48%);
+            font-size: 1000%;
+            color:white;
+        }
+        .container{
+            position: relative;
+        }
+    </style>
+    <body>
+        <div style="display: flex;">
+        <div class="container">
+            <img src="1-list.png"/>
+            <div class="static-contrast">List</div>
+            <div class="static">List</div>
+        </div>  
+        <div class="container">
+            <img src="2-new.png">
+            <div class="static-contrast">New</div>
+            <div class="static">New</div>
+        </div>
+        <div class="container">  
+            <img src="3-details.png"/>
+            <div class="static-contrast">Details</div>
+            <div class="static">Details</div>
+        </div>
+        <div class="container">
+            <img src="4-edit.png"/>
+            <div class="static-contrast">Edit</div>
+            <div class="static">Edit</div>
+        </div>
+        <div class="container">
+            <img src="5-list.png"/>
+            <div class="static-contrast">Populated</div>
+            <div class="static">Populated</div>
+        </div>
+        </div>
+    </body>
+</html>

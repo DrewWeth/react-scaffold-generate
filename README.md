@@ -5,11 +5,18 @@
 
 This project is a port of `rails scaffold generate` for React ([More info](https://www.rubyguides.com/2020/03/rails-scaffolding/)). It leverages file templating and dynamic form generation, with routing and CRUD state management.
 
-I used to do a lot of Ruby of Rails projects and loved the ability to generate a model, view, and controller for a model in seconds. It abstracted CRUD operations, form generation, form validation, basic list-detail presentation pages and fast forwarded every new project.
+I used to do a lot of Ruby of Rails projects and loved the ability to generate a model, view, and controller for a model in seconds. It abstracted CRUD operations, form generation, form validation, basic list-detail presentation pages and fast forwarded development on new projects.
+
+Demo: http://rsg.drewweth.com
+
+Here's what it does:
+![output from cli](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/cli.png?raw=true)
+
+Below is a picture of 5 different screens created by the generator to manage state of a model.
+![steps of generator](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/steps.png?raw=true)
 
 
-![steps of generator](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/append.png?raw=true)
-
+---
 
 
 ## Example usage:
@@ -72,6 +79,8 @@ Part of the templating overwrites index.js which replaces `<App>` with `<Router>
 npm start
 ```
 
+---
+
 ## Command Arguments
 
 `react-scaffold-generate generate [ModelName] [list of attributeName:attributeType:atributeFormat`
@@ -98,6 +107,15 @@ integer | | integer value
 
 [more details on react-jsonschema-form types](https://react-jsonschema-form.readthedocs.io/en/latest/usage/widgets/)
 
+After generating the model, you can go to `src/components/MODEL_NAME/model.js` to inspect and change the model definition which includes fields, types, display format, and whether the field is required or not (default not required, i.e. `false`)
+
+--- 
+
+## Internal Structure (What's going on)
+
+There are a set of common files and model specific files. The common files will be generated to `src/components` and contain logic for state management, app router, dynamic form component, and more. The model specific files are generated at `src/components/MODEL_NAME` and contain components for state actions (list, detail, edit, new), a route components which contains the routing details for the model, and a model.js which holds the schema of the model in JSON form.
+
+--- 
 
 ## Local Development
 
@@ -113,3 +131,13 @@ npm i
 
 `setup` makes an example-app and installs dependencies in that directory. `watch` reloads the templates and example-app when templates or cli.js are updated. 
 
+
+---
+
+## Contributing
+
+Fork the repository and open a pull request
+
+https://github.com/firstcontributions/first-contributions
+
+For feature discussions or questions, open an issue on Github and label it `discussion`.

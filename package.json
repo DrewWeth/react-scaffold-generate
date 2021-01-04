@@ -4,6 +4,7 @@
   "description": "",
   "type": "module",
   "main": "cli.js",
+  "private": false,
   "scripts": {
     "test": "jest",
     "start": "",

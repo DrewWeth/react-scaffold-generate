@@ -7,7 +7,7 @@ This project is a port of `rails scaffold generate` for React ([More info](https
 
 I used to do a lot of Ruby of Rails projects and loved the ability to generate a model, view, and controller for a model in seconds. It abstracted CRUD operations, form generation, form validation, basic list-detail presentation pages and fast forwarded development on new projects.
 
-Demo: http://rsg.drewweth.com
+LIVE DEMO: http://rsg.drewweth.com
 
 Here's what it does:
 ![output from cli](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/cli.png?raw=true)

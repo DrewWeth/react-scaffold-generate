@@ -113,7 +113,10 @@ After generating the model, you can go to `src/components/MODEL_NAME/model.js` t
 
 ## Internal Structure (What's going on)
 
-There are a set of common files and model specific files. The common files will be generated to `src/components` and contain logic for state management, app router, dynamic form component, and more. The model specific files are generated at `src/components/MODEL_NAME` and contain components for state actions (list, detail, edit, new), a route components which contains the routing details for the model, and a model.js which holds the schema of the model in JSON form.
+* There are a set of common files and model specific files. The common files will be generated to `src/components` and contain logic for state management, app router, dynamic form component, and more. 
+* The model specific files are generated at `src/components/MODEL_NAME` and contain components for state actions (list, detail, edit, new), a route components which contains the routing details for the model, and a `model.js` which holds the schema of the model in JSON form.
+* There is `models.json` file that contains a list of keys with the name of models created with scaffold. This file is used to created the Navbar, dynamically import routes, and is merged when `react-scaffold-generate` is run.
+* Currently' all common files (including `Components.css`) and the model specific directory contents (including `model.js`) are overwritten when the generator runs (I have not added a flag to prevent this). Please use git so you can revert your custom logic and styling, just in case.
 
 --- 
 

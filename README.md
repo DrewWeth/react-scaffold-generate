@@ -3,7 +3,7 @@
 
 ## About
 
-This project is a port of `rails scaffold generate` for React. You can learn more about Rail's scaffold generator [here](https://www.rubyguides.com/2020/03/rails-scaffolding/). I mainly used it for its MVP (model, view, controller) generator. It abstracted CRUD operations, form generation, form validation, list-detail presentation pages, database migrations, SQL queries through ActiveRecord, and styling all with one command.
+This project is a port of `rails scaffold generate` for React. You can learn more about Rail's scaffold generator [here](https://www.rubyguides.com/2020/03/rails-scaffolding/). I mainly used it for its MVC (model, view, controller) generator. It abstracted CRUD operations, form generation, form validation, list-detail presentation pages, database migrations, SQL queries through ActiveRecord, and styling all with one command.
 
  This project leverages file templating, dynamic form generation, routing and CRUD state management to apply those concepts to React and supercharge any project by skipping lots of boilerplate setup.
 

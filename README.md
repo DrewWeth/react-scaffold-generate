@@ -9,7 +9,7 @@ This project is a port of `rails scaffold generate` for React. You can learn mor
 
 After one command, you can publish your app. I've included a link to that example here:
 
-LIVE DEMO: http://rsg.drewweth.com.s3-website-us-east-1.amazonaws.com/
+LIVE DEMO: http://rsg.drewweth.com
 
 Here's what it does:
 ![output from cli](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/cli.png?raw=true)

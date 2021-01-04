@@ -97,7 +97,9 @@ integer | | integer value
 
 ## Local Development
 `npm i`
+
 `npm run setup`
+
 `npm run watch` 
 
 `setup` makes an example-app and installs dependencies in that directory. `watch` reloads the templates and example-app when templates or cli.js are updated. 

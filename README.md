@@ -3,9 +3,13 @@
 
 ## About
 
+This project is a port of `rails scaffold generate` for React ([More info](https://www.rubyguides.com/2020/03/rails-scaffolding/)). It leverages file templating and dynamic form generation, with routing and CRUD state management.
+
 I used to do a lot of Ruby of Rails projects and loved the ability to generate a model, view, and controller for a model in seconds. It abstracted CRUD operations, form generation, form validation, basic list-detail presentation pages and fast forwarded every new project.
 
-This project is a port of `rails scaffold generate` for React ([More info](https://www.rubyguides.com/2020/03/rails-scaffolding/)). It leverages file templating and dynamic form generation, with routing and CRUD state management.
+
+![steps of generator](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/append.png?raw=true)
+
 
 
 ## Example usage:
@@ -68,7 +72,7 @@ Part of the templating overwrites index.js which replaces `<App>` with `<Router>
 npm start
 ```
 
-## Arguments
+## Command Arguments
 
 `react-scaffold-generate generate [ModelName] [list of attributeName:attributeType:atributeFormat`
 
@@ -96,11 +100,16 @@ integer | | integer value
 
 
 ## Local Development
-`npm i`
 
+Clone this repo then run:
+```
+# Install dependencies
+npm i
+# Creates example-app, runs react-scaffold-generate, installs extra dependencies
 `npm run setup`
-
+# Runs templater and example-app
 `npm run watch` 
+```
 
 `setup` makes an example-app and installs dependencies in that directory. `watch` reloads the templates and example-app when templates or cli.js are updated. 
 

@@ -7,13 +7,19 @@ import ScaffoldHome from './ScaffoldHome';
 import 'react-notifications/lib/notifications.css';
 import './Component.css';
 
-import models from './routes.json'
-const scaffoldModels = Object.keys(models)
+import models from './models.json'
 
-const lazyRoutes = scaffoldModels.map(name => React.lazy(() => import(`./${name}/Routes`)))
+const scaffoldModels = Object.keys(models)
+const lazyRoutes = scaffoldModels.map(name => React.lazy(() => import(`./${name}/Routes`) ))
 
 const Content = ({ children, hideBorder }) => {
-    return <div className={`content ${!hideBorder && 'border'}`}>{children}</div>
+    return (
+        <div className="sidePadding">
+            <div className={`content ${!hideBorder && 'border'}`}>
+                {children}
+            </div>
+        </div>
+    )
 }
 
 const useStickyState = (defaultValue, key) => {
@@ -40,13 +46,13 @@ export const Router = () => {
             </Content>
             <Content>
                 <Switch>
-                    <Route path="/scaffold" exact>
+                    <Route path="/" exact>
                         <ScaffoldHome/>
                     </Route>
-                    <Suspense fallback={<div>Loading...</div>}>
-                        {lazyRoutes.map(Routes => <Routes/>)}
-                    </Suspense>
                 </Switch>
+                <Suspense fallback={<div>Loading...</div>}>
+                    {lazyRoutes.map((Routes, i) => Routes && <Routes key={i}/>)}
+                </Suspense>
             </Content>
             </BrowserRouter>
             <NotificationContainer/>

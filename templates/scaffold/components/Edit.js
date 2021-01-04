@@ -27,7 +27,7 @@ const Edit = () => {
     }
 
     return <div>
-        {Boolean(model) ? 
+        {model ? 
             <div>
                 <Form 
                 title={'Edit {{ComponentName}}'} 

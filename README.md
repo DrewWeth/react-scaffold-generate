@@ -27,14 +27,14 @@ cd example-app
 # Create component Template for Inventory with 4 attributes
 react-scaffold-generate generate Inventory \
     name:string \
-    count:number \
-    description:string \    
-    sku:string
+    description:string:textarea \
+    isSold:boolean \
+    seller:string:email
 ```
 
 The output will be:
 ```
-Success wrote routes.js to src/components/routes.js
+Success wrote and merged models.json to src/components/models.json
 Success wrote model.js to src/components/Inventory/model.js
 Success wrote static component to src/components/Form.js
 Success wrote static component to src/components/Router.js
@@ -42,43 +42,37 @@ Success wrote static component to src/components/State.js
 Success wrote static component to src/components/Shared.js
 Success wrote static component to src/components/Networking.js
 Success wrote static component to src/components/ScaffoldHome.js
-Success wrote model component to src/components/Inventory/Edit.js
-Success wrote model component to src/components/Inventory/Component.css
+Success wrote static component to src/components/Component.css
 Success wrote model component to src/components/Inventory/Details.js
-Success wrote model component to src/components/Inventory/New.js
+Success wrote model component to src/components/Inventory/Edit.js
 Success wrote model component to src/components/Inventory/List.js
+Success wrote model component to src/components/Inventory/New.js
+Success wrote model component to src/components/Inventory/Routes.js
+Success wrote index.js component to index.js
 ```
 
 Install dependencies used by react-scaffold-generate
 ```
+# Used for browser routing, very common React dependency
+npm install --save react-router-dom
 # Used for form generation form UI and css
 npm install --save @rjsf/material-ui
 # Dependency for notifications
 npm install --save react-notifications
-# Used for browser routing, very common React dependency
-npm install --save react-router-dom
 ```
 
-Here we have to tell React to render our app.
-```
-./index.js
-+ import Router from './components/Router'
+Part of the templating overwrites index.js which replaces `<App>` with `<Router>` from `src/components/Router.js`.
 
-- <App/>
-+ <Router/>
-```
-
-Start example app
+### Last step, start example app
 ```
 npm start
 ```
 
 ## Arguments
 
-
 `react-scaffold-generate generate [ModelName] [list of attributeName:attributeType:atributeFormat`
 
-The list of attributes for a model can be the following
+The list of attributes for a model can be the following:
 
 Type | Format | Description
 --- | --- | ---
@@ -101,31 +95,10 @@ integer | | integer value
 [more details on react-jsonschema-form types](https://react-jsonschema-form.readthedocs.io/en/latest/usage/widgets/)
 
 
+## Local Development
+`npm i`
+`npm run setup`
+`npm run watch` 
 
-## Whats going on
+`setup` makes an example-app and installs dependencies in that directory. `watch` reloads the templates and example-app when templates or cli.js are updated. 
 
-The application writes a series of common files and model specific files to `src/components`
-
-```
-Success wrote routes.js to src/components/routes.js
-Success wrote model.js to src/components/Inventory/model.js
-Success wrote static component to src/components/Form.js
-Success wrote static component to src/components/Router.js
-Success wrote static component to src/components/State.js
-Success wrote static component to src/components/Shared.js
-Success wrote static component to src/components/Networking.js
-Success wrote static component to src/components/ScaffoldHome.js
-Success wrote model component to src/components/Inventory/Edit.js
-Success wrote model component to src/components/Inventory/Component.css
-Success wrote model component to src/components/Inventory/Details.js
-Success wrote model component to src/components/Inventory/New.js
-Success wrote model component to src/components/Inventory/List.js
-```
-
-Files in `src/components` are shared between scaffold models. 
-
-Files in `src/components/Inventory` are related to listing, editing, showing details, and styling the Inventory resource.
-
-
-
-``` Developing locally ```

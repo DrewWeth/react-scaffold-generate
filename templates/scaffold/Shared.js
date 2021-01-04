@@ -12,7 +12,6 @@ export const Nav = ({scaffoldModels}) => {
         </div>
         <div>
             <NavLink key={'home'} exact activeClassName={'navLinkActive'} className="spaceLeft navLink" to='/'>Home</NavLink>
-            <NavLink key={'scaffold'} activeClassName={'navLinkActive'} className="spaceLeft navLink" to='/scaffold'>Scaffold</NavLink>
             {Array.isArray(scaffoldModels) && scaffoldModels.map( (name, i) => {
                 return <NavLink key={i} activeClassName={'navLinkActive'} className="spaceLeft navLink" to={`/${name}`}>
                     {name}

@@ -11,7 +11,9 @@ import { getInstalledPath } from 'get-installed-path'
 
 const localPath = await getInstalledPath('react-scaffold-generate')
 
-const USAGE = `${process.argv[1]} generate [modelName] [attributeName:attributeType ...]`
+const ENTRYPOINT = "react-scaffold-generate"
+const EXAMPLE = `${chalk.yellow("EXAMPLE")}: ${ENTRYPOINT} generate Inventory name:string description:string:textarea isSold:boolean seller:string:email`
+const USAGE = `${ENTRYPOINT} generate [MODEL_NAME] [ATTRIBUTE_NAME:ATRIBUTE_TYPE:ATTRIBUTE_FORMAT ...]\n${EXAMPLE}`
 
 export const error = (str) => {
     console.error(chalk.red("ERROR") + ": " + str)
@@ -26,7 +28,8 @@ const main = () => {
     var argv = minimist(process.argv.slice(2));
     const [generate, modelName] = argv._
     
-    // Parse checking
+    // Step 1: Parse checking
+
     if (generate !== "generate") {
         error(`First argument is an action [generate]\n${chalk.green('USAGE')}: ${USAGE}`)
         exit(1)
@@ -46,17 +49,18 @@ const main = () => {
         exit(1)
     }
     
-    
-    const ComponentName = modelName.charAt(0).toUpperCase() + modelName.slice(1)
+    const componentName = modelName.toLowerCase()
+    const ComponentName = componentName.charAt(0).toUpperCase() + componentName.slice(1)
     const basepath = argv["p"] || argv["path"] || cwd()
     
+    // Function for getting path relative to basepath.
     const relative = (str) =>{
         return path.relative(basepath, str);
     }
     
     const data = {
         ComponentName, 
-        componentName: modelName.toLowerCase(),
+        componentName,
         attrs,
         meta: { 
             basepath
@@ -69,13 +73,14 @@ const main = () => {
     }
 
 
+    // Step 2: Done parsing, print internal state and start templating process.
+    
     console.log(JSON.stringify(data, null, 2))
-
 
     const scaffoldPath = path.join(localPath, "templates", "scaffold")
     const componentsPath = path.join(scaffoldPath, "components")
 
-    const staticFiles = [ 
+    const staticComponentFiles = [ 
         "Form.js",
         "Router.js",
         "State.js",
@@ -85,44 +90,45 @@ const main = () => {
         "Component.css"
     ].map(fileName => path.join(scaffoldPath, fileName))
     
-    
     const destinationComponentPath = path.join(data.meta.basepath, "src", "components")
-    const newComponentPath = path.join(destinationComponentPath, ComponentName)
-    makeFolders(newComponentPath)
+    const destinationModelPath = path.join(destinationComponentPath, ComponentName)
+    makeFolders(destinationModelPath)
 
-    const routesPath = path.join(destinationComponentPath, "routes.json")
-    mergeJSON(routesPath, { [ComponentName]: {} }, { pretty:true })
-    console.log(`${chalk.green("Success")} wrote and merged routes.json to ${relative(routesPath)}`)
+    // Merge scaffold attributes to 
+    const modelsPath = path.join(destinationComponentPath, "models.json")
+    mergeJSON(modelsPath, { [ComponentName]: {} }, { pretty:true })
+    console.log(`${chalk.green("Success")} wrote and merged models.json to ${relative(modelsPath)}`)
     
     // Output static files
-    staticFiles.map(sourcePath => {
-        const destinationPath = path.join(destinationComponentPath, path.parse(sourcePath).base)
+    staticComponentFiles.forEach(sourcePath => {
+        const fileName = path.parse(sourcePath).base
+        const destinationPath = path.join(destinationComponentPath, fileName)
         renderTemplateFile(sourcePath, data).then(str => {
             fs.writeFileSync(destinationPath, str)
             console.log(`${chalk.green("Success")} wrote static component to ${relative(destinationPath)}`)
-            destinationPath
         })    
     })
 
     // Output model files
-    const modelDefPath = path.join(newComponentPath, `model.js`)
+    const modelDefPath = path.join(destinationModelPath, `model.js`)
     fs.writeFileSync(modelDefPath, `export const model = ${JSON.stringify(data.attrs, 0, 2)}`)
     console.log(`${chalk.green("Success")} wrote model.js to ${relative(modelDefPath)}`)
 
     const componentFiles = fs.readdirSync(componentsPath).map(name => path.join(componentsPath, name))
-    componentFiles.map(sourcePath => {
-        const destinationPath = path.join(newComponentPath, path.parse(sourcePath).base)
+    componentFiles.forEach(sourcePath => {
+        const fileName = path.parse(sourcePath).base
+        const destinationPath = path.join(destinationModelPath, fileName)
         renderTemplateFile(sourcePath, data).then(str => {
             fs.writeFileSync(destinationPath, str)
             console.log(`${chalk.green("Success")} wrote model component to ${relative(destinationPath)}`)
-            destinationPath
         })
     })
 
     const indexTemplatePath = path.join(scaffoldPath, "index.js")
+    const indexWritePath = path.join(data.meta.basepath, "src", "index.js")
     renderTemplateFile(indexTemplatePath, data).then(str =>{
-        fs.writeFileSync(data.meta.basepath, str)
-        console.log(`${chalk.green("Success")} wrote index.js component to ${indexTemplatePath}`)
+        fs.writeFileSync(indexWritePath, str)
+        console.log(`${chalk.green("Success")} wrote index.js component to ${relative(indexWritePath)}`)
     })
 }
 

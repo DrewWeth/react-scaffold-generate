@@ -1,0 +1,3 @@
+generate model --path example-app/ date:string:date password:string:password color:string:color name:string description:string cost:number count:integer isTrue:boolean range:integer:range null:null updown:number:updown file:string:data-url email:string:email uri:string:uri datetime:string:date-time text:string:textarea
+
+

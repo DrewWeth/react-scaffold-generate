@@ -97,3 +97,7 @@ a{
     max-width: 450px;
     width:100%;
 }
+
+.sidePadding{
+    padding: 0 10px;
+}

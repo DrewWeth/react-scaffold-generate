@@ -5,9 +5,10 @@ import {model} from './model.js'
 import {ActionButtons} from '../Shared'
 
 function List () {
-  const { state, setState } = useContext(State)
+  const { state } = useContext(State)
   const elements = state["{{ componentName }}"] || [] 
-
+  const attrs = model && model.attrs ? model.attrs : []
+  
   return (
     <div>
       <div className="flex">
@@ -17,11 +18,11 @@ function List () {
         <Link to='/{{componentName}}/new' className="navLink">New {{ComponentName}}</Link>
       </div>
       <div>
-        <table className="styled-table block">
+        <table className="styled-table">
           <thead>
             <tr>
               <th>ID</th>
-              {model && model.map(({name}, kIndex) =>{
+              {attrs.map(({name}, kIndex) =>{
                 return <th key={kIndex}>{name}</th>
               })}
               {elements.length > 0 && <th></th>}
@@ -30,12 +31,12 @@ function List () {
           <tbody>
             {elements.map((element, eIndex) =>
               <tr key={eIndex}>
-                <td>{element["_id"]}</td>
-                {model.map((attribute, vIndex) => {
-                  return <td key={vIndex}>{element[attribute.name]}</td>
+                <td><code>{element["_id"]}</code></td>
+                {attrs.map(( {name}, vIndex) => {
+                  return <td key={vIndex}><code>{element[name]}</code></td>
                 })}
                 <td className='rightAlign'>
-                  <ActionButtons modelName={"{{componentName}}"} id={element["_id"]} showDetails showEdit />
+                  <ActionButtons modelName={"{{componentName}}"} id={element["_id"]} flipRightSpace={true} showDetails showEdit />
                 </td>
               </tr>
             )}

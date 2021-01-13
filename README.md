@@ -1,20 +1,24 @@
 # react-scaffold-generate
 
+Build an entire application in one command.
+
 
 ## About
 
-This project is a port of `rails scaffold generate` for React. You can learn more about Rail's scaffold generator [here](https://www.rubyguides.com/2020/03/rails-scaffolding/). I mainly used it for its MVC (model, view, controller) generator. It abstracted CRUD operations, form generation, form validation, list-detail presentation pages, database migrations, SQL queries through ActiveRecord, and styling all with one command.
 
- This project leverages file templating, dynamic form generation, routing and CRUD state management to apply those concepts to React and supercharge any project by skipping lots of boilerplate setup.
+This project is a port of `rails scaffold generate` for React. You can learn more about [Rail's scaffold generator](https://www.rubyguides.com/2020/03/rails-scaffolding/) here. I mainly used it for its MVC (model, view, controller) generator. It abstracted CRUD operations, form generation, form validation, list-detail presentation pages, database migrations, SQL queries through ActiveRecord, and styling all with one command.
 
-After one command, you can publish your app. I've included a link to that example here:
+ This project leverages file templating, dynamic form generation, routing and CRUD state management to apply those concepts to React and supercharge any project by skipping lots of boilerplate setup. Create an entire app in one command.
+
+Here is a deployed demo of what `react-scaffold-generate` can do after one command:
 
 LIVE DEMO: http://rsg.drewweth.com
 
-Here's what it does:
+
+Here we're creating all the files required to manage an "Inventory" object.
 ![output from cli](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/cli.png?raw=true)
 
-Below is a picture of 5 different screens created by the generator to manage state of a model.
+Below is a picture of 5 different pages created by the generator to manage state of a model.
 ![steps of generator](https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/steps.png?raw=true)
 
 

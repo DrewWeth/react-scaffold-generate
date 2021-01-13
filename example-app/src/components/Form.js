@@ -2,7 +2,9 @@ import Form from "@rjsf/material-ui";
 
 export default ({title, modelDefinition, onSubmit, formData, after}) =>{
   var formDataCleaned = {...formData}
-  const props = modelDefinition.reduce( (prev, curr) =>{
+  const attrs = modelDefinition?.attrs || []
+  
+  const props = attrs.reduce( (prev, curr) =>{
     const {name, type} = curr
     prev[name] = { type, title: name }
     if(type === "boolean"){
@@ -13,7 +15,7 @@ export default ({title, modelDefinition, onSubmit, formData, after}) =>{
     return prev
   }, {})
 
-  const uiSchema = modelDefinition.reduce( (prev, curr) =>{
+  const uiSchema = attrs.reduce( (prev, curr) =>{
     const {name, field} = curr
     if(field){
       prev[name] = {"ui:widget":field}
@@ -24,21 +26,15 @@ export default ({title, modelDefinition, onSubmit, formData, after}) =>{
   const schema = {
     title,
     type: "object",
-    required: modelDefinition.filter(attr => attr.required === true).map(attr => attr.name),
+    required: attrs.filter(attr => attr.required === true).map(attr => attr.name),
     properties: props
   };
   
-    return <div className='formContainer'>
-      <div className="formBox">
+    return <div className="formBox spacer">
         <Form schema={schema}
           onSubmit={onSubmit}
           uiSchema={uiSchema}
           formData={formDataCleaned}
           onError={(e) => console.warn(e) } />
-    
       </div>
-      <div className="padding20">
-        {after}
-      </div>
-    </div>
 }

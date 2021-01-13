@@ -5,7 +5,7 @@ import {
 import {getModel, updateModel} from '../Networking'
 import { State } from '../State'
 import Form from '../Form'
-import {ActionButtons} from '../Shared'
+import {ActionButtons, BackButton} from '../Shared'
 import {NotificationManager} from 'react-notifications';
 import {model as modelDefinition} from './model.js'
 import { useHistory } from "react-router-dom";
@@ -27,15 +27,16 @@ const Edit = () => {
     }
 
     return <div>
+        <BackButton modelName="{{componentName}}" />
         {model ? 
             <div>
                 <Form 
-                title={'Edit {{ComponentName}}'} 
-                modelDefinition={modelDefinition} 
-                formData={model} 
-                onSubmit={editModel} 
-                after={<ActionButtons showDetails modelName={"{{componentName}}"} id={id}/>}
+                    title={'Edit {{ComponentName}}'} 
+                    modelDefinition={modelDefinition} 
+                    formData={model} 
+                    onSubmit={editModel}
                 />
+                <ActionButtons showDetails modelName={"{{componentName}}"} id={id}/>
             </div>
         : <div>
             Model with ID {id} does not exist

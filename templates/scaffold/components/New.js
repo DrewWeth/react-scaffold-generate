@@ -25,17 +25,17 @@ function New () {
 
   return (
     <div>
-        <BackButton modelName={model.componentName} />
+        <BackButton modelName="{{componentName}}" marginBottom={'15px'}/>
         <Form 
           title={`New ${model.ComponentName}`} 
-          modelDefinition={model} 
-          onSubmit={onSubmit} 
-          after={lastLink && 
-            <div className='spacerTop'>
-              <Link className='navLink' to={lastLink}>Go to model</Link>
-            </div>
-          }
+          modelDefinition={model}
+          onSubmit={onSubmit}
         />
+        {lastLink && 
+          <div className='spacerTop'>
+            <Link className='navLink' to={lastLink}>Go to model</Link>
+          </div>
+        }
     </div>
   );
 }

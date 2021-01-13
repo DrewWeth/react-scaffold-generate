@@ -2,6 +2,7 @@
 
 Build an entire application in one command.
 
+https://www.npmjs.com/package/react-scaffold-generate
 
 ## About
 
@@ -26,6 +27,9 @@ Below is a picture of 5 different pages created by the generator to manage state
 
 
 ## Example usage:
+
+Npm package:
+https://www.npmjs.com/package/react-scaffold-generate
 
 Install templating 
 ```

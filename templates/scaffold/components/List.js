@@ -21,7 +21,7 @@ function List () {
           <thead>
             <tr>
               <th>ID</th>
-              {model && model.map(({name}, kIndex) =>{
+              {model && model?.attr?.map(({name}, kIndex) =>{
                 return <th key={kIndex}>{name}</th>
               })}
               {elements.length > 0 && <th></th>}
@@ -31,7 +31,7 @@ function List () {
             {elements.map((element, eIndex) =>
               <tr key={eIndex}>
                 <td>{element["_id"]}</td>
-                {model.map((attribute, vIndex) => {
+                {model?.attr?.map((attribute, vIndex) => {
                   return <td key={vIndex}>{element[attribute.name]}</td>
                 })}
                 <td className='rightAlign'>

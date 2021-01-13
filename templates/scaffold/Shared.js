@@ -21,6 +21,10 @@ export const Nav = ({scaffoldModels}) => {
     </div>
 }
 
+export const BackButton = ({modelName}) => {
+    return <Link to={`/${modelName}`}></Link>
+}
+
 export const ActionButtons = ({ modelName, id, showDetails, showEdit }) =>{
     const { state, setState } = useContext(State)
     return <div>

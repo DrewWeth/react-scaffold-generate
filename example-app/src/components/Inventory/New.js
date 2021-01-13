@@ -5,6 +5,7 @@ import Form from '../Form';
 import {stateCreateModel} from '../Networking'
 import {NotificationManager} from 'react-notifications';
 import {model} from './model.js'
+import { BackButton } from '../Shared';
 
 function New () {
   const { state, setState } = useContext(State)
@@ -12,20 +13,21 @@ function New () {
   const [lastLink, setLastLink] = useState()
 
   const notfificationClicked = (id) => (e) =>{
-    history.push(`/inventory/${id}`)
+    history.push(`/${model.componentName}/${id}`)
   }
 
   const onSubmit = (e) => {
     const id = new Date().getTime().toString(36)
-    stateCreateModel(setState, state, "inventory", {"_id": id, ...e.formData})
-    NotificationManager.info("Go to details page", "Inventory created", undefined, notfificationClicked(id) );
-    setLastLink(`/inventory/${id}`)
+    stateCreateModel(setState, state, `${model.componentName}`, {"_id": id, ...e.formData})
+    NotificationManager.info("Go to details page", `${model.ComponentName} created`, undefined, notfificationClicked(id) );
+    setLastLink(`/${model.componentName}/${id}`)
   }
 
   return (
-    <div>  
+    <div>
+        <BackButton modelName={model.componentName} />
         <Form 
-          title={`New Inventory`} 
+          title={`New ${model.ComponentName}`} 
           modelDefinition={model} 
           onSubmit={onSubmit} 
           after={lastLink && 

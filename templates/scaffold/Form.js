@@ -2,7 +2,7 @@ import Form from "@rjsf/material-ui";
 
 export default ({title, modelDefinition, onSubmit, formData, after}) =>{
   var formDataCleaned = {...formData}
-  const props = modelDefinition.reduce( (prev, curr) =>{
+  const props = modelDefinition?.attr?.reduce( (prev, curr) =>{
     const {name, type} = curr
     prev[name] = { type, title: name }
     if(type === "boolean"){
@@ -13,7 +13,7 @@ export default ({title, modelDefinition, onSubmit, formData, after}) =>{
     return prev
   }, {})
 
-  const uiSchema = modelDefinition.reduce( (prev, curr) =>{
+  const uiSchema = modelDefinition?.attr?.reduce( (prev, curr) =>{
     const {name, field} = curr
     if(field){
       prev[name] = {"ui:widget":field}
@@ -24,7 +24,7 @@ export default ({title, modelDefinition, onSubmit, formData, after}) =>{
   const schema = {
     title,
     type: "object",
-    required: modelDefinition.filter(attr => attr.required === true).map(attr => attr.name),
+    required: modelDefinition?.attr?.filter(attr => attr.required === true).map(attr => attr.name),
     properties: props
   };
   

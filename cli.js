@@ -64,8 +64,7 @@ const main = () => {
         attrs,
         meta: { 
             basepath
-        },
-        doubleEscapeState: () => `{{ state, setState }}`
+        }
     }
     if(!fs.existsSync(path.join(data.meta.basepath, "package.json")) && !argv["g"]){
         console.error(`${chalk.yellow("Warning")}: Are you sure you are in a React project directory? It is recommended to run this command in the root directory of a react project (where package.json is). To run in directory without package.json use -g flag.`)
@@ -111,7 +110,7 @@ const main = () => {
 
     // Output model files
     const modelDefPath = path.join(destinationModelPath, `model.js`)
-    fs.writeFileSync(modelDefPath, `export const model = ${JSON.stringify(data.attrs, 0, 2)}`)
+    fs.writeFileSync(modelDefPath, `export const model = ${JSON.stringify(data, 0, 2)}`)
     console.log(`${chalk.green("Success")} wrote model.js to ${relative(modelDefPath)}`)
 
     const componentFiles = fs.readdirSync(componentsPath).map(name => path.join(componentsPath, name))

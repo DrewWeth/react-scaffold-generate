@@ -19,11 +19,11 @@ export const getModel = (setState, state, modelName, id) =>{
 }
 
 export const updateModel = (setState, state, modelName, id, newObj) => {
-    const lastIndex = state[modelName].length - 1
+    const stateLen = state[modelName].length
     const indexOfId = Array.isArray(state[modelName]) ? state[modelName].findIndex(obj => obj["_id"] == id) : -1
     if(indexOfId !== -1){   
         const leftSide = state[modelName].slice(0, indexOfId)
-        const rightSide = state[modelName].slice(indexOfId, lastIndex)
+        const rightSide = state[modelName].slice(indexOfId + 1, stateLen)
         const newArr = [...leftSide, newObj, ...rightSide]
         setState({
             ...state,

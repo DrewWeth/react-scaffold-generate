@@ -1,8 +1,12 @@
 # react-scaffold-generate
 
-Build an entire application in one command.
+Build an entire React application in one command.
 
-https://www.npmjs.com/package/react-scaffold-generate
+NPM: https://www.npmjs.com/package/react-scaffold-generate
+
+Live DEMO: LIVE DEMO: http://rsg.drewweth.com
+
+
 
 ## About
 
@@ -11,9 +15,7 @@ This project is a port of `rails scaffold generate` for React. You can learn mor
 
  This project leverages file templating, dynamic form generation, routing and CRUD state management to apply those concepts to React and supercharge any project by skipping lots of boilerplate setup. Create an entire app in one command.
 
-Here is a deployed demo of what `react-scaffold-generate` can do after one command:
-
-LIVE DEMO: http://rsg.drewweth.com
+Here is a deployed demo of what `react-scaffold-generate` can do after one command: http://rsg.drewweth.com
 
 
 Here we're creating all the files required to manage an "Inventory" object.

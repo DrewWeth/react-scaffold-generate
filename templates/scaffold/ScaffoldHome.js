@@ -12,7 +12,7 @@ const ScaffoldHome = () => {
         <h3>About</h3>
         <div className="section">
             <p>
-                This app was made with 3 commands, and one was command was <code>cd</code>.
+                This app was made with 3 commands, and one of them was <code>cd</code>.
                 <div className="codeExample"> 
                     <img className="responsive" src="https://github.com/DrewWeth/react-scaffold-generate/blob/main/static/generate-no-padding.png?raw=true"></img>
                 </div>

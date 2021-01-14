@@ -21,6 +21,23 @@
     margin-right:15px;
 }
 
+.codeExample{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0px;
+}
+
+.codeExample > img{
+    image-rendering: -webkit-optimize-contrast;
+    box-shadow: 0 5px 10px rgba(154,160,185,.05), 0 15px 40px rgba(166,173,201,.2);
+    max-width: 535px;
+}
+
+img.responsive{
+    width: 100%;
+    height: auto;
+}
+
 .spaceLeft{
     margin-left: 15px;
 }
@@ -57,8 +74,11 @@ a{
     width:100%;
     border-collapse: collapse;
     border-radius: 3px;
-    overflow-x: scroll;
     display: table;
+}
+
+.styled-table-container{
+    overflow-x: auto;
 }
 
 .block{
@@ -98,4 +118,10 @@ a{
 
 .spacerTop40{
     margin-top: 40px;
+}
+
+.section{
+    margin: 0 -20px;
+    padding: 20px;
+    background-color:#f3f3f3;
 }
